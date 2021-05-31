@@ -1,5 +1,7 @@
 package com.vsrpp.onlineshop.entity;
 
+import org.hibernate.annotations.ManyToAny;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,17 @@ public class Edelivery {
     @Column(name = "date")
     private String date;
 
+    @ManyToOne
+    @JoinColumn(name = "id_customer", referencedColumnName = "id")
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "id_book", referencedColumnName = "id")
+    private Book book;
+
+    @ManyToOne
+    @JoinColumn(name = "id_order", referencedColumnName = "id")
+    private Order order;
 
     public Long getId() {
         return id;

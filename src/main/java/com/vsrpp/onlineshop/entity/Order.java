@@ -1,6 +1,7 @@
 package com.vsrpp.onlineshop.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "order", schema = "onlineshop", catalog = "")
@@ -13,6 +14,9 @@ public class Order {
     private String name;
     @Column(name = "price", nullable = true, length = 45)
     private String price;
+
+    @OneToMany(targetEntity = Edelivery.class, mappedBy = "order")
+    private List<Edelivery> edeliverys;
 
     public Long getId() {
         return id;
