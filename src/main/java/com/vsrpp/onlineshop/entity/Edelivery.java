@@ -1,11 +1,12 @@
 package com.vsrpp.onlineshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "edelivery", schema = "onlineshop", catalog = "")
+@Table(name = "edelivery", schema = "onlineshop")
 public class Edelivery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +17,7 @@ public class Edelivery {
     @Column(name = "date")
     private String date;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_customer", referencedColumnName = "id")
     private Customer customer;
@@ -24,9 +26,10 @@ public class Edelivery {
     @JoinColumn(name = "id_book", referencedColumnName = "id")
     private Book book;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_order", referencedColumnName = "id")
-    private Order order;
+    private Order orders;
 
     public Long getId() {
         return id;
@@ -36,8 +39,6 @@ public class Edelivery {
         this.id = id;
     }
 
-
-
     public String getCountOfBooks() {
         return countOfBooks;
     }
@@ -46,13 +47,35 @@ public class Edelivery {
         this.countOfBooks = countOfBooks;
     }
 
-
-
     public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Order getOrder() {
+        return orders;
+    }
+
+    public void setOrder(Order orders) {
+        this.orders = orders;
     }
 }

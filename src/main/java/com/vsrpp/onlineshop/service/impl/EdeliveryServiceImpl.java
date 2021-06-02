@@ -7,17 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service
 
+@Service
 public class EdeliveryServiceImpl implements EdeliveryService {
     @Autowired
     EdeliveryRepository edeliveryRepository;
 
-    @Override
-    public Edelivery findByName(String name) {
+    //@Override
+    /*public Edelivery findByName(String name) {
         return edeliveryRepository.findEdeliveryByName(name);
-    }
-
+    }*/
     @Override
     public void save(Edelivery edelivery) {
         edeliveryRepository.save(edelivery);

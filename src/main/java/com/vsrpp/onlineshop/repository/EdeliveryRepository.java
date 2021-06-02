@@ -7,8 +7,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "edelivery", path = "edelivery")
 public interface EdeliveryRepository extends JpaRepository<Edelivery, Long> {
 
-    Edelivery findEdeliveryById(Long id);
+   Edelivery findEdeliveryById(Long id);
 
-    Edelivery findEdeliveryByName(String name);
+ //   Edelivery findEdeliveryByName(String name);
 
 }

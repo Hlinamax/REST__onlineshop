@@ -1,10 +1,14 @@
 package com.vsrpp.onlineshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "customer", schema = "onlineshop", catalog = "")
+@Table(name = "customer", schema = "onlineshop")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +23,7 @@ public class Customer {
     @Column(name = "password", nullable = true, length = 45)
     private String password;
 
+    @JsonIgnore
     @OneToMany(targetEntity = Edelivery.class, mappedBy = "customer")
     private List<Edelivery> customers;
 

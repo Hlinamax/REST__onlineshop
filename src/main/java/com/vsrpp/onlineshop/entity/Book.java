@@ -1,10 +1,13 @@
 package com.vsrpp.onlineshop.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "book", schema = "onlineshop", catalog = "")
+@Table(name = "book", schema = "onlineshop")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +26,9 @@ public class Book {
     @Column(name = "descriprion", nullable = true, length = 45)
     private String descriprion;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(targetEntity = Edelivery.class, mappedBy = "book")
-    private List<Edelivery> edeliverys;
+    private List<Edelivery> edelivery;
 
     public Long getId() {
         return id;
@@ -82,4 +86,11 @@ public class Book {
         this.descriprion = descriprion;
     }
 
+    public List<Edelivery> getEdelivery() {
+        return edelivery;
+    }
+
+    public void setEdelivery(List<Edelivery> edelivery) {
+        this.edelivery = edelivery;
+    }
 }
